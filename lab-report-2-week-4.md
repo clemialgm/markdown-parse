@@ -16,3 +16,31 @@ The original MarkdownParse works well, but it works for some image files as well
 **Second change**
 
 code change:
+
+![image](pic3)
+
+The failure inducing input which prompts to make this change is: [link](https://github.com/clemialgm/markdown-parse/commit/8a3b7f864ad9c9cc75dc34b090e1021d9424d706#diff-c30dbff4e529133282d848da192ac83e5d6f1c7593c0e31db0e4104f43178d3e)
+
+output of the failure:
+
+![image](pic4)
+
+The code after the first change successfully removes the image, but when we delete the headings, there are new problems. 
+
+An out of boundary exception will occur when there is a link in the first line of the Markdown file, because the index is 0 while the loop is checking index smaller than -1.
+
+
+
+**Third change**
+
+code change:
+
+![image](pic5)
+
+the input: [link](https://github.com/clemialgm/markdown-parse/commit/ae45e60603545b7346888cf6517c76e3d6ba3931#diff-c30dbff4e529133282d848da192ac83e5d6f1c7593c0e31db0e4104f43178d3e)
+
+output of the terminal
+
+![image](pic6)
+
+this time all the errrors are fixed and the terminal works well.
